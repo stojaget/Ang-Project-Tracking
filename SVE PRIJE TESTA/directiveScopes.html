@@ -1,0 +1,45 @@
+﻿<html ng-app="exampleApp">
+<head>
+    <title>Directive scopes</title>
+    <script src="angular.js"></script>
+ <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+  <script type="text/ng-template" id="scopeTemplate">
+      <div class="panel-body">
+          <!--<p>Name: <input ng-model="data.name" /></p>
+          <p>City: <input ng-model="city" /></p>
+          <p>Country: <input ng-model="country" /></p>-->
+          <p>Data value: {{local}}</p>
+      </div>
+  </script>
+    <script>
+        angular.module("exampleApp", [])
+        .directive("scopeDemo", function () {
+            return {
+                template: function(){
+                    return angular.element(document.querySelector("#scopeTemplate")).html();
+                },
+                //deklariramo izolirani skope, 
+                //znači ne nasljeđuje podatke iz scope kontrolera, zasebni scope za svaki instancu direktive
+                scope: {
+                local: "@nameprop"}
+            }
+        })
+        .controller("scopeCtrl", function ($scope) {
+            //ovo je objekt pa će on u svim instancama direktive biti sinkroniziran
+            $scope.data = { name: "Ana" };
+            //ovo je atribut, pa neće biti sinkan
+            $scope.city = "Zagreb";
+        });
+        
+    </script>
+   </head>
+<body ng-controller="scopeCtrl">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Direct binding: <input ng-model="data.name" />
+        </div>
+        <div class="panel-body" scope-demo nameprop="{{data.name + 'Vajčner'}}"></div>
+    </div>
+</body>
+</html>

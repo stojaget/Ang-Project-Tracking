@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>AngularJS Directive</title>
+
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+
+            $scope.todos = [{id:100, place: "Zubar", action: "odi zubaru jedan dan", complete: false },
+        { id: 200, place: "Doma", action: "miijevci", complete: true }, { id: 400, place: "Trening gym", action: "otici na trening", complete: true },
+        { id: 300, place: "Sljeme", action: "odi vozi jedan dan", complete: false }];
+            //$scope.addNewItem = function (newItem) {
+
+            //    if (angular.isDefined(newItem) && angular.isDefined(newItem.action) && angular.isDefined(newItem.location)) {
+            //        $scope.todos.push({
+            //            action: newItem.action + "(" + newItem.location + ")", complete: false
+
+            //        });
+            //    }
+            //};
+            //$scope.addUser = function (userDetails) {
+            //    if (myForm.$valid) {
+            //        $scope.message = userDetails.name + "(" + userDetails.email + ") (" + userDetails.agreed + ")";
+            //    } else {
+            //        $scope.showValidation = true;
+            //    }
+                
+            //}
+            //$scope.message = "Ready";
+
+            //$scope.getError = function (error) {
+            //    if (angular.isDefined(error)) {
+            //        if (error.required) {
+            //            return "please enter a value";
+            //        }
+            //        else if (error.email) {
+            //            return "please enter a valid email address";
+            //        }
+            //    }
+            //}
+        });
+    </script>
+    <!--<style>
+        form .ng-invalid-required.ng-dirty {
+            background-color: lightpink;
+        }
+          form .ng-invalid-email.ng-dirty {
+            background-color: lightgoldenrodyellow;
+        }
+     
+        div.error {color: red; font-weight: bold;}
+    </style>-->
+</head>
+<body>
+    <div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+        <!--<h3 class="panel-header">
+            To do list
+            <span class="label label-info">
+                {{(todos | filter: {complete: 'false'}).length}}
+            </span>
+        </h3>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="well">
+                    <div class="form-group" row>
+                        <label for="actionText">Action:</label>
+                        <input id="actionText" class="form-control" ng-model="newTodo.action" />
+                    </div>
+                    <div class="form-group row">
+                        <label for="actionLocation">Location:</label>
+                        <select id="actionLocation" class="form-control" ng-model="newTodo.location">
+                            <option>Home</option>
+                            <option>Office</option>
+                            <option>Mall</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary btn-block" ng-click="addNewItem(newTodo)">Add</button>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <table class="table">
+                    <thead>
+                        <tr><th>#</th><th>Action</th><th>Done</th></tr>
+                    </thead>
+                    <tr ng-repeat="item in todos">
+                        <td>{{$index +1}}</td>
+                        <td>{{item.action}}</td>
+                        <td>
+                            <input type="checkbox" ng-model="item.complete" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>-->
+        <form name="myForm" novalidate>
+            <div class="well">
+                <div class="well">
+                    <div class="form-group">
+                        <label>Select an action:</label>
+                        <select ng-model="selectValue" ng-options="item.action group by item.place for item in todos">
+                            <option value="">(Pick one)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="well">
+                    <p>Selected: {{selectValue || 'None'}}</p>
+                </div>
+                <!--<div class="form-group">
+                   
+                    <label>Name:</label>
+                    <input name="userName" type="text" class="form-control" required ng-model="newUser.name" />
+                </div>-->
+
+                <!--<div class="form-group">
+                    <label>Email:</label>
+                    <input name="userEmail" type="email" class="form-control" required ng-model="newUser.email" />
+                </div>
+                <div class="error" ng-show="showValidation">
+                    {{getError(myForm.userEmail.$error)}}
+                </div>-->
+                <!--<div class="checkbox">
+                    <label>
+                        <input name="agreed" type="checkbox" ng-model="newUser.agreed" required />
+                        I agree to the terms and conditions
+                    </label>
+                </div>-->
+                <!--<button type="submit" class="btn btn-primary btn-block" ng-disabled="myForm.$invalid">OK</button>-->
+            </div>
+         
+        </form>
+    </div>
+</body>
+</html>
