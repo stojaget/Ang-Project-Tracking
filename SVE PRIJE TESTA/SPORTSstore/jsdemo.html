@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Primjer</title>
+<script src="angular.js"></script>
+<script type="text/javascript">
+    var mojePolje = [100, "mii", true];
+    mojePolje[0] = "beštija je- ";
+    for (var i = 0; i < mojePolje.length; i++) {
+        console.log("index je " + i + ": " + mojePolje[i]);
+    }
+    console.log("---");
+    angular.forEach(mojePolje, function (value, key)
+    {
+        //angular će uzeti index polja za ključ, a vrijednost mu je vrijednost polja
+        console.log(key + ": " + value);
+    })
+    //var myData = {
+    //    name: "buub",
+    //    vrijeme: "dobro",
+    //    ispisPoruke: function () {
+    //        console.log("đe si " + this.name);
+    //        console.log("vrijeme je " + this.vrijeme);
+    //    }
+    //};
+    //var hasName = "name" in myData;
+    //console.log("objekt ima svojstvo name " + hasName);
+  
+    //for(var prop in myData){
+    //    console.log("ime " + name + "value " + myData[prop]);
+    //}
+    //console.log("----");
+    //angular.forEach(myData, function (value, key) {
+    //    console.log("ime " + key + "value: " + value);
+    //});
+    //myData.ispisPoruke();
+    //var mojProsireniObjekt = { grad: "Zagreb" };
+  
+    //angular.extend(mojProsireniObjekt, myData);
+    //console.log(mojProsireniObjekt.name);
+    //console.log(mojProsireniObjekt.grad);
+    //console.log("provjera da li imamo objekt " + angular.isObject(myData));
+    //console.log("provjera da li imamo objekt " + angular.isObject(myData.vrijeme));
+
+</script>
+</head>
+<body>
+Ovoo je primjer
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<html ng-app="exampleApp">
+<head>
+    <title>services and modules</title>
+    <script src="angular.js"></script>
+    <script src="directives.js"></script>
+    <script src="services.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", ["customDirectives", "customServices"])
+.controller("defaultCtrl", function ($scope, logService) {
+    //ovo je objekt pa će on u svim instancama direktive biti sinkroniziran
+    $scope.data = {
+        cities: ["London", "New York", "Paris"],
+        totalClicks: 0
+
+    };
+    $scope.$watch('data.totalClicks', function (newVal) {
+        logService.log("Total click count: " + newVal);
+    });
+});
+
+    </script>
+    <script src="directives.js"></script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <div class="btn-group" tri-button counter="data.totalClicks" resource="data.cities">
+            <button class="btn-group btn-default" ng-repeat="city in data.cities">
+                {{city}}
+
+            </button>
+        </div>
+        <h5>Totla clicks: {{data.totalClicks}}</h5>
+    </div>
+</body>
+</html>
